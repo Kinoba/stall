@@ -65,6 +65,8 @@ module Stall
     end
 
     def register_class_models_for(model, classes)
+      return if defined?(::Rake::SprocketsTask)
+
       return unless model.table_exists?
 
       classes.each_key do |name|
