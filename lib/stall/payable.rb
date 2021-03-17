@@ -14,6 +14,11 @@ module Stall
 
       scope :finalized, -> { paid }
 
+      scope :without_payment, lambda {
+        joins('LEFT JOIN stall_payments ON stall_product_lists.id = stall_payments.cart_id')
+          .where(stall_payments: { id: nil })
+      }
+
       scope :aborted, ->(options = {}) {
         joins('LEFT JOIN stall_payments ON stall_payments.cart_id = stall_product_lists.id')
           .where(stall_payments: { paid_at: nil })

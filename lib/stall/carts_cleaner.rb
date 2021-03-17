@@ -20,10 +20,11 @@ module Stall
     #
     def clean_empty_carts
       carts = cart_model.empty.older_than(Stall.config.empty_carts_expires_after.ago)
+      carts = carts.without_payment if cart_model == Cart
 
-      log "Cleaning #{ carts.count } empty carts ..."
+      log "Cleaning #{carts.count} empty carts ..."
       carts.destroy_all
-      log "Done."
+      log 'Done.'
     end
 
     # Unpaid carts have line items and other models related. Since empty carts
@@ -33,10 +34,11 @@ module Stall
     # Note : The given cart model should implement the `.unpaid` method
     def clean_aborted_carts
       carts = cart_model.aborted
+      carts = carts.reject { |cart| cart.payment.present? || cart.shipment.present? } if cart_model == Cart
 
-      log "Cleaning #{ carts.count } aborted carts ..."
-      carts.destroy_all
-      log "Done."
+      log "Cleaning #{carts.count} aborted carts ..."
+      carts.each(&:destroy)
+      log 'Done.'
     end
 
     def log(*args)
