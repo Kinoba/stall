@@ -22,7 +22,7 @@ module Stall
                                           class_name: 'CreditNote',
                                           dependent: :nullify
 
-        validates :type, presence: true
+        validates :cart_type, presence: true
 
         after_initialize :ensure_state
 
