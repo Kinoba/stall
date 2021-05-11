@@ -29,7 +29,7 @@ module Stall
     def amount
       @amount ||= begin
         amount = if params[:amount]
-          cents = BigDecimal.new(params[:amount]) * 100
+          cents = BigDecimal(params[:amount]) * 100
           Money.new(cents, cart.currency)
         else
           credit

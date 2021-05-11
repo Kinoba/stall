@@ -16,7 +16,7 @@ module Stall
     param :email_regexp, -> { (defined?(Devise) && Devise.email_regexp) || /\A[^@\s]+@([^@\s]+\.)+[^@\W]+\z/ }
 
     # Default VAT rate
-    param :vat_rate, BigDecimal.new('20.0')
+    param :vat_rate, BigDecimal('20.0')
 
     # Default prices precision for rounding
     param :prices_precision, 2
