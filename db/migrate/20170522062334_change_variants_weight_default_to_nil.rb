@@ -1,4 +1,4 @@
-class ChangeVariantsWeightDefaultToNil < ActiveRecord::Migration
+class ChangeVariantsWeightDefaultToNil < ActiveRecord::Migration[4.2]
   def up
     change_column_default :stall_variants, :weight, nil
 

@@ -1,4 +1,4 @@
-class CreateStallCuratedListProducts < ActiveRecord::Migration
+class CreateStallCuratedListProducts < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_curated_list_products do |t|
       t.references :product, index: true

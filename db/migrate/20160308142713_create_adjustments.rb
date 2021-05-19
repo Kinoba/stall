@@ -1,4 +1,4 @@
-class CreateAdjustments < ActiveRecord::Migration
+class CreateAdjustments < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_adjustments do |t|
       t.string     :name,            null: false

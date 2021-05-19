@@ -1,4 +1,4 @@
-class CreateStallUsers < ActiveRecord::Migration
+class CreateStallUsers < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_users do |t|
       ## Database authenticatable

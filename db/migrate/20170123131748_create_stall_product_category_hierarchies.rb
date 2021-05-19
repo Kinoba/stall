@@ -1,4 +1,4 @@
-class CreateStallProductCategoryHierarchies < ActiveRecord::Migration
+class CreateStallProductCategoryHierarchies < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_product_category_hierarchies, id: false do |t|
       t.integer :ancestor_id, null: false

@@ -16,10 +16,10 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  s.add_dependency 'rails', '>= 4.2', '<= 6.0'
+  s.add_dependency 'rails', '>= 5.0', '<= 6.0'
   s.add_dependency 'coffee-rails', '~> 4.0'
   s.add_dependency 'pg', '~> 0.16'
-  s.add_dependency 'haml-rails', '~> 0.1'
+  s.add_dependency 'haml-rails', '~> 1.0.0'
   s.add_dependency 'simple_form', '~> 3.0'
   s.add_dependency 'has_secure_token', '~> 1.0'
   s.add_dependency 'vertebra', '~> 0.1'
@@ -29,7 +29,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'cocoon', '~> 1.0'
   s.add_dependency 'deep_merge', '~> 1.1'
   s.add_dependency 'friendly_id', '~> 5.1'
-  s.add_dependency 'para', '~> 0.7'
   s.add_dependency 'ransack'
 
   s.add_dependency 'devise'

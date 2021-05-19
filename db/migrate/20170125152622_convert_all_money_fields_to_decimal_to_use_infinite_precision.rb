@@ -1,4 +1,4 @@
-class ConvertAllMoneyFieldsToDecimalToUseInfinitePrecision < ActiveRecord::Migration
+class ConvertAllMoneyFieldsToDecimalToUseInfinitePrecision < ActiveRecord::Migration[4.2]
   def up
     change_column :stall_adjustments, :price_cents, :decimal, precision: 13, scale: 3
     change_column :stall_adjustments, :eot_price_cents, :decimal, precision: 13, scale: 3

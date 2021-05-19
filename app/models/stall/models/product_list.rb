@@ -104,8 +104,7 @@ module Stall
         # declaring class
         #
         def aborted(options = {})
-          where.not(state: wizard.steps.last)
-            .older_than(options.fetch(:before, 1.day.ago))
+          where.not(state: wizard.steps.last).older_than(options.fetch(:before, 1.day.ago))
         end
 
         def finalized

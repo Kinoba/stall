@@ -1,4 +1,4 @@
-class CreateStallProductLists < ActiveRecord::Migration
+class CreateStallProductLists < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_product_lists do |t|
       t.string     :state,    null: false

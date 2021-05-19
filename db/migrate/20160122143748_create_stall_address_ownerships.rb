@@ -1,4 +1,4 @@
-class CreateStallAddressOwnerships < ActiveRecord::Migration
+class CreateStallAddressOwnerships < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_address_ownerships do |t|
       t.references :address,     index: true

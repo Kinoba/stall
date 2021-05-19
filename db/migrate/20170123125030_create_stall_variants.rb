@@ -1,4 +1,4 @@
-class CreateStallVariants < ActiveRecord::Migration
+class CreateStallVariants < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_variants do |t|
       t.references :product, index: true

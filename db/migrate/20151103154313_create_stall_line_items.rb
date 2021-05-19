@@ -1,4 +1,4 @@
-class CreateStallLineItems < ActiveRecord::Migration
+class CreateStallLineItems < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_line_items do |t|
       t.references :sellable,        polymorphic: true, index: true

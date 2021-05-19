@@ -8,7 +8,7 @@ RSpec.describe Stall::PaymentsController do
 
       expect(service).to receive(:call)
 
-      get :notify, gateway: 'fake-payment-gateway'
+      get :notify, params: { gateway: 'fake-payment-gateway' }
 
       expect(response.status).to eq(200)
       expect(response.body).to eq('')

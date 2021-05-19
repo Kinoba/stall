@@ -1,4 +1,4 @@
-class CreateStallAddresses < ActiveRecord::Migration
+class CreateStallAddresses < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_addresses do |t|
       t.integer    :civility

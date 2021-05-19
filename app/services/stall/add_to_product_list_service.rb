@@ -1,10 +1,10 @@
 module Stall
   class AddToProductListService < Stall::BaseService
-    attr_reader :product_list, :params
+    attr_reader :product_list, :service_params
 
-    def initialize(product_list, params)
+    def initialize(product_list, service_params)
       @product_list = product_list
-      @params = params
+      @service_params = service_params
     end
 
     def call
@@ -54,7 +54,7 @@ module Stall
     end
 
     def line_item_params
-      @line_item_params ||= params.require(:line_item).permit(
+      @line_item_params ||= service_params.require(:line_item).permit(
         :sellable_type, :sellable_id, :quantity
       )
     rescue ActionController::ParameterMissing

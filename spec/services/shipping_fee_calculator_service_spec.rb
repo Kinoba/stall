@@ -4,6 +4,7 @@ RSpec.describe Stall::ShippingFeeCalculatorService do
   describe '#call' do
     it 'updates the cart shipment price when a shipping method is set' do
       cart = create_cart
+      cart.line_items << build(:line_item, weight: 0)
 
       Stall::ShippingFeeCalculatorService.new(cart).call
 
@@ -20,6 +21,7 @@ RSpec.describe Stall::ShippingFeeCalculatorService do
 
     it 'does nothing and returns nil if no shipping calculator is found for the current shipping method' do
       cart = create_cart
+      cart.line_items << build(:line_item, weight: 0)
       cart.shipment.shipping_method.identifier = 'undefined'
 
       expect(Stall::ShippingFeeCalculatorService.new(cart).call).to eq(nil)

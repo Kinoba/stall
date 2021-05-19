@@ -3,7 +3,7 @@
 #
 # See : https://github.com/activerecord-hackery/ransack/issues/453
 #
-class ChangeAllJsonColumnsToJsonb < ActiveRecord::Migration
+class ChangeAllJsonColumnsToJsonb < ActiveRecord::Migration[4.2]
   def up
     change_column :stall_line_items, :data, 'jsonb USING CAST(data AS jsonb)'
     change_column :stall_payments, :data, 'jsonb USING CAST(data AS jsonb)'

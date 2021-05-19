@@ -20,3 +20,8 @@ gem 'devise'
 gem 'redactor-rails', github: 'glyph-fr/redactor-rails'
 
 # gem 'para', path: '~/gems/para'
+gem 'para', '0.7.1', git: 'https://github.com/kinoba/para.git', branch: 'redesign'
+
+group :test do 
+  gem 'rails-controller-testing'
+end

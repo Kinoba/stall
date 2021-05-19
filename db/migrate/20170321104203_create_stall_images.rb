@@ -1,4 +1,4 @@
-class CreateStallImages < ActiveRecord::Migration
+class CreateStallImages < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_images do |t|
       t.integer :position, default: 0

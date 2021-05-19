@@ -1,4 +1,4 @@
-class AddReferenceToProductLists < ActiveRecord::Migration
+class AddReferenceToProductLists < ActiveRecord::Migration[4.2]
   def up
     add_column :stall_product_lists, :reference, :string
     add_index :stall_product_lists, :reference, unique: true

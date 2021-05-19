@@ -7,7 +7,7 @@ RSpec.describe Stall::CheckoutsController do
     it "resets cart checkout state and redirects to wizard's first step" do
       cart = create_cart(state: :final)
 
-      get :show, cart_key: cart.identifier
+      get :show, params: { cart_key: cart.identifier }
 
       expect(cart.reload.state).to eq(:fake)
       expect(response).to redirect_to(checkout_step_path(cart_key: cart.identifier))

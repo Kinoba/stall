@@ -8,7 +8,7 @@ class AddressOwnership < ActiveRecord::Base
   belongs_to :addressable, polymorphic: true
 end
 
-class AddTypeToStallAddressOwnerships < ActiveRecord::Migration
+class AddTypeToStallAddressOwnerships < ActiveRecord::Migration[4.2]
   def up
     change_table :stall_addresses do |t|
       t.string :type

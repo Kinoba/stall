@@ -1,4 +1,4 @@
-class CreateCreditNoteAdjustments < ActiveRecord::Migration
+class CreateCreditNoteAdjustments < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_credit_note_usages do |t|
       t.references :credit_note, index: true

@@ -1,4 +1,4 @@
-class ChangePositionDefaultForStallProducts < ActiveRecord::Migration
+class ChangePositionDefaultForStallProducts < ActiveRecord::Migration[4.2]
   def up
     change_column_default :stall_products, :position, 0
   end

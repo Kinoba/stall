@@ -1,4 +1,4 @@
-class CreateStallShipments < ActiveRecord::Migration
+class CreateStallShipments < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_shipments do |t|
       t.references  :cart,             index: true

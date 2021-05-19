@@ -42,10 +42,14 @@ RSpec.describe Stall::AddToCartService do
   end
 
   def build_service(cart, sellable, quantity = 1)
-    Stall::AddToCartService.new(cart, {
-      sellable_type: sellable.class.name,
-      sellable_id: sellable.id,
-      quantity: quantity
-    })
+    Stall::AddToCartService.new(cart,
+                                ActionController::Parameters.new(
+                                  line_item: {
+                                    sellable_type: sellable.class.name,
+                                    sellable_id: sellable.id,
+                                    quantity: quantity
+                                  }
+                                )
+                              )
   end
 end

@@ -20,8 +20,8 @@ RSpec.describe Stall::Shipping::CountryWeightTableCalculator do
   describe '#price' do
     it 'returns the first price that matches the cart country and weight' do
       cart = build(:cart)
-      cart.line_items << build(:line_item, weight: 0.5)
-      cart.line_items << build(:line_item, weight: 1)
+      cart.line_items << build(:line_item, weight: 500)
+      cart.line_items << build(:line_item, weight: 1000)
       cart.shipping_address = build(:shipping_address, country: 'GB')
 
       calculator = FakeShippingCalculator.new(cart, build(:shipping_method))
@@ -31,8 +31,8 @@ RSpec.describe Stall::Shipping::CountryWeightTableCalculator do
 
     it 'returns nil if no price was found for the cart country or weight' do
       cart = build(:cart)
-      cart.line_items << build(:line_item, weight: 2)
-      cart.line_items << build(:line_item, weight: 1)
+      cart.line_items << build(:line_item, weight: 2000)
+      cart.line_items << build(:line_item, weight: 1000)
       cart.shipping_address = build(:shipping_address, country: 'GB')
 
       calculator = FakeShippingCalculator.new(cart, build(:shipping_method))

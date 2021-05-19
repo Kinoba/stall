@@ -1,4 +1,4 @@
-class CreateCustomers < ActiveRecord::Migration
+class CreateCustomers < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_customers do |t|
       t.string :email

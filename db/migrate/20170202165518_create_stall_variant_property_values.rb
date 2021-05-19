@@ -1,4 +1,4 @@
-class CreateStallVariantPropertyValues < ActiveRecord::Migration
+class CreateStallVariantPropertyValues < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_variant_property_values do |t|
       t.references :property_value, index: true

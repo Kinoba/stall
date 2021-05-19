@@ -1,4 +1,4 @@
-class CreateStallPayments < ActiveRecord::Migration
+class CreateStallPayments < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_payments do |t|
       t.references :payment_method, index: true

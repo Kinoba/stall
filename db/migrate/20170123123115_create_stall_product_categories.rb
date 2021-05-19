@@ -1,4 +1,4 @@
-class CreateStallProductCategories < ActiveRecord::Migration
+class CreateStallProductCategories < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_product_categories do |t|
       t.string :name

@@ -1,4 +1,4 @@
-class CreateStallProductDetails < ActiveRecord::Migration
+class CreateStallProductDetails < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_product_details do |t|
       t.references :product, index: true

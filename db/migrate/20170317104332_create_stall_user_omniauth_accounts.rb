@@ -1,4 +1,4 @@
-class CreateStallUserOmniauthAccounts < ActiveRecord::Migration
+class CreateStallUserOmniauthAccounts < ActiveRecord::Migration[4.2]
   def change
     create_table :stall_user_omniauth_accounts do |t|
       t.references :user, index: true
