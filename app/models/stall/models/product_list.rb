@@ -15,7 +15,7 @@ module Stall
         has_many :line_items, -> { ordered }, dependent: :destroy
         accepts_nested_attributes_for :line_items, allow_destroy: true
 
-        belongs_to :customer
+        belongs_to :customer, optional: true
         accepts_nested_attributes_for :customer
 
         has_many :generated_credit_notes, as: :source,
@@ -28,7 +28,7 @@ module Stall
 
         before_save :save_customer_if_changed
 
-        scope :empty, -> {
+        scope :empty, lambda {
           joins(
             'LEFT JOIN stall_line_items ' \
             'ON stall_product_lists.id = stall_line_items.product_list_id'
@@ -37,9 +37,7 @@ module Stall
 
         scope :filled, -> { joins(:line_items) }
 
-        scope :older_than, ->(date) {
-          where('stall_product_lists.updated_at < ?', date)
-        }
+        scope :older_than, ->(date) { where('stall_product_lists.updated_at < ?', date) }
       end
 
       def state

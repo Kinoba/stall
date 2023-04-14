@@ -8,6 +8,7 @@ module Stall
       cart.line_items << line_item unless assemble_identical_line_items
 
       cart.save.tap do |saved|
+        Rails.logger.debug("[Stall::AddToCartService] cart (#{cart.inspect}) errors: #{cart.errors.full_messages.join}")
         return false unless saved
 
         # Recalculate shipping fee if available for calculation to ensure
