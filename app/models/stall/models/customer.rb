@@ -8,7 +8,7 @@ module Stall
 
         include Stall::Addressable
 
-        belongs_to :user, polymorphic: true, inverse_of: :customer
+        belongs_to :user, polymorphic: true, inverse_of: :customer, optional: true
         accepts_nested_attributes_for :user
 
         before_validation :ensure_user_email

@@ -71,7 +71,11 @@ module Stall
       # cart object, running the step validations and saving the cart
       def save
         cart.assign_attributes(cart_params)
-        cart.save if valid?
+        if valid?
+          cart.save
+        else
+          Rails.logger.debug("[Stall::Checkout::Step] cart (#{cart.inspect}) errors: #{cart.errors.full_messages.join}")
+        end
       end
 
       private

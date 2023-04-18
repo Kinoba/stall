@@ -31,7 +31,11 @@ module Stall
         prepare_addresses_attributes
         cart.assign_attributes(cart_params)
 
-        return false unless valid?
+        unless valid?
+          Rails.logger.debug("[Stall::Checkout::InformationsCheckoutStep] cart (#{cart.inspect}) errors: #{cart.errors.full_messages.join}")
+
+          return false
+        end
 
         cart.save.tap do |valid|
           assign_addresses_to_customer!
@@ -139,7 +143,7 @@ module Stall
         # Do not fill addresses if we have errors on the address models since 
         # it means the form has just been submitted
         return if cart.shipping_address && cart.shipping_address.errors.any?
-        
+
         Stall::Addresses::PrefillTargetFromSource.new(cart.customer, cart).copy
       end
 

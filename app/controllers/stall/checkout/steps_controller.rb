@@ -11,12 +11,13 @@ module Stall
       end
 
       def update
+        Rails.logger.debug("[Stall::Checkout::StepsController] @step (#{@step.inspect})")
         if @step.process
           @wizard.validate_current_step!
           redirect_to step_path
         else
           @step.prepare
-          flash[:error] ||= t("stall.checkout.#{ @wizard.current_step_name }.error")
+          flash[:error] ||= t("stall.checkout.#{@wizard.current_step_name}.error")
           render 'show'
         end
       end
@@ -31,7 +32,7 @@ module Stall
           redirect_to step_path
         else
           @step.prepare
-          flash[:error] ||= t("stall.checkout.#{ target_step }.error")
+          flash[:error] ||= t("stall.checkout.#{target_step}.error")
           render 'show'
         end
       end
