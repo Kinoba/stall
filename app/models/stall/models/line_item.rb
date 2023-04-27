@@ -15,7 +15,7 @@ module Stall
                  with_model_currency: :currency, allow_nil: true
 
         belongs_to :sellable, polymorphic: true
-        belongs_to :product_list
+        belongs_to :product_list, optional: true
 
         validates :name, :unit_price, :unit_eot_price, :vat_rate, :price, :quantity,
                   :eot_price, :sellable, presence: true
