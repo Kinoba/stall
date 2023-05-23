@@ -1,14 +1,27 @@
+# frozen_string_literal: true
+
 module Stall
+  # AddToCartService
   class AddToCartService < Stall::AddToProductListService
-    alias_method :cart, :product_list
+    alias cart product_list
 
     def call
-      return false unless line_item_valid?
+      line_items_array = @service_params[:line_items] || [@service_params[:line_item]]
 
-      cart.line_items << line_item unless assemble_identical_line_items
+      line_items_array.each do |line_item_object|
+        @each_line_item = line_item_object
+
+        unless line_item_valid?
+          return false if @service_params[:line_item].present?
+
+          next
+        end
+
+        cart.line_items << line_item unless assemble_identical_line_items
+      end
 
       cart.save.tap do |saved|
-        Rails.logger.debug("[Stall::AddToCartService] cart (#{cart.inspect}) errors: #{cart.errors.full_messages.join}")
+        Rails.logger.debug("[App::Stall::AddToCartService] cart errors: #{cart.errors}")
         return false unless saved
 
         # Recalculate shipping fee if available for calculation to ensure
