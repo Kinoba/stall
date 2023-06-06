@@ -5,7 +5,7 @@ module Stall
     end
 
     initializer 'stall.set_money_gem_infinite_precision' do
-      Money.infinite_precision = true
+      Money.default_infinite_precision = true
     end
 
     initializer 'stall.add_routing_mapper_extension' do

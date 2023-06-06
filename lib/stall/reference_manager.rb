@@ -3,7 +3,7 @@ module Stall
     extend ActiveSupport::Concern
 
     included do
-      after_save :ensure_reference, on: :create
+      after_save :ensure_reference
     end
 
     def ensure_reference
