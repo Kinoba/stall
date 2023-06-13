@@ -22,7 +22,7 @@ module Stall
 
         def country_name
           if iso_country
-            iso_country.translations[I18n.locale.to_s] || iso_country.name
+            iso_country.translations[I18n.locale.to_s] || iso_country.iso_short_name
           end
         end
 
