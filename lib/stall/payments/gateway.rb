@@ -35,7 +35,7 @@ module Stall
         @transaction_id ||= begin
           if refresh || !(id = cart.payment.transaction_id)
             id = next_transaction_id
-            cart.payment.update_attributes(transaction_id: id)
+            cart.payment.update(transaction_id: id)
           end
 
           id

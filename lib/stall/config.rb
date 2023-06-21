@@ -98,7 +98,7 @@ module Stall
     def service_for(identifier)
       class_name = if (service_name = services[identifier])
         "::#{ services[identifier].gsub(/^::/, '') }"
-      elsif File.exists?(Rails.root.join('app', 'services', "#{ identifier }_service.rb"))
+      elsif File.exist?(Rails.root.join('app', 'services', "#{ identifier }_service.rb"))
         "::#{ identifier.to_s.camelize }Service"
       else
         "Stall::#{ identifier.to_s.camelize }Service"

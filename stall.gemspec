@@ -1,4 +1,4 @@
-$:.push File.expand_path('../lib', __FILE__)
+$:.push File.expand_path('lib', __dir__)
 
 # Maintain your gem's version:
 require 'stall/version'
@@ -16,33 +16,33 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  s.add_dependency 'rails', '>= 5.0', '<= 6.1'
-  s.add_dependency 'coffee-rails'
-  s.add_dependency 'pg', '~> 1.0'
-  s.add_dependency 'haml-rails'
-  s.add_dependency 'simple_form'
-  s.add_dependency 'has_secure_token', '~> 1.0'
-  s.add_dependency 'vertebra', '~> 0.1'
-  s.add_dependency 'money-rails', '~> 1.6'
-  s.add_dependency 'request_store', '~> 1.3'
-  s.add_dependency 'country_select'
   s.add_dependency 'cocoon', '~> 1.0'
+  s.add_dependency 'coffee-rails'
+  s.add_dependency 'country_select'
   s.add_dependency 'deep_merge', '~> 1.1'
   s.add_dependency 'friendly_id', '~> 5.1'
+  s.add_dependency 'haml-rails'
+  s.add_dependency 'has_secure_token', '~> 1.0'
+  s.add_dependency 'money-rails', '~> 1.6'
+  s.add_dependency 'pg', '~> 1.0'
+  s.add_dependency 'rails', '>= 5.0', '< 7.1'
   s.add_dependency 'ransack'
+  s.add_dependency 'request_store', '~> 1.3'
+  s.add_dependency 'simple_form'
+  s.add_dependency 'vertebra', '~> 0.1'
 
   s.add_dependency 'devise'
   s.add_dependency 'omniauth'
   s.add_dependency 'omniauth-facebook'
   s.add_dependency 'omniauth-google-oauth2'
 
-  s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'shoulda-matchers', '~> 3.0'
-  s.add_development_dependency 'factory_girl_rails', '~> 4.0'
-  s.add_development_dependency 'database_cleaner', '~> 1.5'
   s.add_development_dependency 'capybara'
+  s.add_development_dependency 'codeclimate-test-reporter', '~> 1.0.0'
+  s.add_development_dependency 'database_cleaner', '~> 1.5'
+  s.add_development_dependency 'factory_girl_rails', '~> 4.0'
   s.add_development_dependency 'launchy'
+  s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'rubocop-rails'
-  s.add_development_dependency 'codeclimate-test-reporter', '~> 1.0.0'
+  s.add_development_dependency 'shoulda-matchers', '~> 3.0'
 end
