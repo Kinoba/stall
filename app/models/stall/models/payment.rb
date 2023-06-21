@@ -18,7 +18,7 @@ module Stall
       end
 
       def pay!
-        update_attributes!(paid_at: Time.now)
+        update!(paid_at: Time.now)
       end
 
       def paid?

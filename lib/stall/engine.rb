@@ -24,15 +24,17 @@ module Stall
       ::ApplicationController.send(:include, Stall::WishListHelper)
     end
 
-    initializer 'stall.ensure_shipping_method_for_all_calculators' do
-      register_class_models_for(ShippingMethod, Stall::Shipping.calculators)
-    end
+    # TODO: uncomment
+    # initializer 'stall.ensure_shipping_method_for_all_calculators' do
+    #   register_class_models_for(ShippingMethod, Stall::Shipping.calculators)
+    # end
 
-    initializer 'stall.ensure_payment_method_for_all_gateways' do
-      require 'stall/payments/manual_payment_gateway'
+    # TODO: uncomment
+    # initializer 'stall.ensure_payment_method_for_all_gateways' do
+    #   require 'stall/payments/manual_payment_gateway'
 
-      register_class_models_for(PaymentMethod, Stall::Payments.gateways)
-    end
+    #   register_class_models_for(PaymentMethod, Stall::Payments.gateways)
+    # end
 
     initializer 'stall.add_stall_plugin_to_para_config' do
       Para.config.plugins += [:stall]

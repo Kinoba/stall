@@ -38,6 +38,10 @@ module Stall
         amount - adjustments.map(&:price).sum.abs
       end
 
+      def remaining_amount_without_rate_conversion
+        (amount.to_f - adjustments.map(&:price).sum.abs.to_f).round(2).to_s.tr('.', ',')
+      end
+
       def vat_rate
         read_attribute(:vat_rate) || write_attribute(:vat_rate, Stall.config.vat_rate)
       end

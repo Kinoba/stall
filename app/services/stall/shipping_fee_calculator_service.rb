@@ -22,7 +22,7 @@ module Stall
 
     def update_price_for(shipment, calculator)
       if calculator.price
-        shipment.update_attributes(
+        shipment.update(
           price: calculator.price,
           eot_price: calculator.eot_price,
           vat_rate: calculator.vat_rate
@@ -35,7 +35,7 @@ module Stall
     def reset_shipment_price
       return unless cart.shipment.try(:shipping_method)
 
-      cart.shipment.update_attributes(price: 0, eot_price: 0, vat_rate: 0)
+      cart.shipment.update(price: 0, eot_price: 0, vat_rate: 0)
     end
 
     def calculator
