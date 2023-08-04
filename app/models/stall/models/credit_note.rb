@@ -14,7 +14,7 @@ module Stall
                  with_model_currency: :currency, allow_nil: true
 
         belongs_to :customer
-        belongs_to :source, polymorphic: true
+        belongs_to :source, polymorphic: true, optional: true
 
         has_many :credit_note_usages, dependent: :destroy
         has_many :adjustments, through: :credit_note_usages
@@ -36,6 +36,10 @@ module Stall
 
       def remaining_amount
         amount - adjustments.map(&:price).sum.abs
+      end
+
+      def remaining_amount_without_rate_conversion
+        (amount.to_f - adjustments.map(&:price).sum.abs.to_f).round(2).to_s.tr('.', ',')
       end
 
       def vat_rate
